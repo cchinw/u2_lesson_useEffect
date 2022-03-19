@@ -1,16 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Surprise from './Surprise'
 import '../styles/App.css'
 
 const Counter = () => {
-  const [count, updateCount] = useState(0)
+  const [count, setCount] = useState(0)
+
+  useEffect(()=>{
+    console.log('Mounted the Counter')
+  },[count])
 
   const incrementCount = () => {
-    updateCount(count + 1)
+    setCount(count + 1)
   }
 
   const decrementCount = () => {
-    if (count > 0) updateCount(count - 1)
+    if (count > 0) setCount(count - 1)
   }
 
   return (
@@ -27,7 +31,7 @@ const Counter = () => {
         </div>
       )}
       <div>
-        <button onClick={() => updateCount(0)}>RESET</button>
+        <button onClick={() => setCount(0)}>RESET</button>
       </div>
     </div>
   )
